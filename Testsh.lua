@@ -885,10 +885,10 @@ spawner.Run = function(entityTable)
 						end
 	
 						-- Damage detection
-						if not model:GetAttribute("Paused") and not usedCrucifix then
+					if not model:GetAttribute("Paused") and not usedCrucifix then
 							local c = config.Damage
 							if c.Enabled and c.Range > 0 and localHum.Health > 0 and not localChar:GetAttribute("Hiding") and model:GetAttribute("Damage") and not model:GetAttribute("BeingBanished") and (charPivot.Position - pivot.Position).Magnitude <= c.Range and inSight then
-if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
+                    if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
                     local v80 = game:GetService("TweenService")
                     local v81 = game.Players.LocalPlayer.Character.Crucifix.Handle:Clone()
                     game.Players.LocalPlayer.Character.Crucifix:Destroy()
@@ -900,25 +900,7 @@ if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
                     v80:Create(v81, TweenInfo.new(5), {
                         Transparency = 1
                     }):Play()
-                   function GitAud(soundgit,filename)
-    SoundName=tostring(SoundName)
-    local url=soundgit
-    local FileName = filename
-    writefile(FileName..".mp3", game:HttpGet(url))
-    return (getcustomasset or getsynasset)(FileName..".mp3")
-end
-
-function CustomGitSound(soundlink, vol, filename)
-    local sound = Instance.new("Sound")
-    sound.SoundId = GitAud(soundlink, filename)
-    sound.Parent = workspace
-    sound.Volume = 2.6
-sound.Looped = false
-   sound:Play()
-end
-
-CustomGitSound("https://raw.githubusercontent.com/Voor-Pr00/Eye/refs/heads/main/DOORS-UNUSED-SOUNDTRACK-Stress%20(mp3cut.net).mp3", 1, "crucifix")
-                    local v82 = {
+                   local v82 = {
                         Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
                     }
                     local v83 = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game
@@ -930,13 +912,12 @@ CustomGitSound("https://raw.githubusercontent.com/Voor-Pr00/Eye/refs/heads/main/
                         v84:MoveTo(v85.whitenew.CFrame.Position - Vector3.new(0, 0.5, 0) - Vector3.new(0, 3, 0))
                         local v86 = model:Clone()
                         v86.Parent = game.Workspace
-                        v86.Name = "Wh1t3Clone"
+                        v86.Name = "Crush"
                         v84.Entity.CFrame = v86.whitenew.CFrame
                         v85:Destroy()
-                        Color3.fromRGB(0, 0, 255)
                         local v87 = ColorSequence.new({
-                            ColorSequenceKeypoint.new(0, Color3.new(0, 0, 1)),
-                            ColorSequenceKeypoint.new(1, Color3.new(0, 0, 1))
+                            ColorSequenceKeypoint.new(0, Color3.new(0, 1, 1)),
+                            ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
                         })
                         if true == true then
                             local v88 = next
@@ -986,18 +967,7 @@ CustomGitSound("https://raw.githubusercontent.com/Voor-Pr00/Eye/refs/heads/main/
                         wait(4)
                         v86:Destroy()
                         v81:Destroy()
-wait(2.5)
                         v84:Destroy()
-wait(5)
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voor-Pr00/Achivements/refs/heads/main/Voorpr0"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "Who kills who now",
-    Desc = "You don’t want crash game today?",
-    Reason = "Use Crucifix on Wh1t3",
-    Image = "rbxassetid://100801611123508"
-})
 end
 else
 								model:SetAttribute("Damage", false)
@@ -1036,7 +1006,7 @@ end
 					local nodesToCurrent, nodesToEnd = GetPathfindNodesBlitz(config)
 	
 					for _, n in nodesToCurrent do
-						local cframe = n.CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+						local cframe = n.CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 						EntityMoveTo(model, cframe, config.Movement.Speed)
 						task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 					end
@@ -1071,7 +1041,7 @@ end
 							
 							local nodeIndex = tonumber(randomNode.Name)
 							for i = #roomNodes, nodeIndex, -1 do
-								local cframe = roomNodes[math.clamp(i, 1, #roomNodes)].CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+								local cframe = roomNodes[math.clamp(i, 1, #roomNodes)].CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 								EntityMoveTo(model, cframe, config.Movement.Speed)
 								task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 							end
@@ -1081,7 +1051,7 @@ end
 							task.spawn(entityTable.RunCallback, entityTable, "OnRebounding", false) -- OnRebounding
 		
 							for i = nodeIndex, #roomNodes, 1 do
-								local cframe = roomNodes[math.clamp(i, 1, #roomNodes)].CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+								local cframe = roomNodes[math.clamp(i, 1, #roomNodes)].CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 								EntityMoveTo(model, cframe, config.Movement.Speed)
 								task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 							end
@@ -1090,7 +1060,7 @@ end
 					
 					local _, updatedToEnd = GetPathfindNodesBlitz(config)
 					for _, n in updatedToEnd do
-						local cframe = n.CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+						local cframe = n.CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 						EntityMoveTo(model, cframe, config.Movement.Speed)
 						task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 					end
@@ -1098,7 +1068,7 @@ end
 					-- Ambush rebounding
 					local pathfindNodes = GetPathfindNodesAmbush(config)
 					for _, n in pathfindNodes do
-						local cframe = n.CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+						local cframe = n.CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 						EntityMoveTo(model, cframe, config.Movement.Speed)
 						task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 					end
@@ -1113,7 +1083,7 @@ end
 	
 							-- Run backwards through nodes
 							for i = #pathfindNodes, 1, -1 do
-								local cframe = pathfindNodes[i].CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+								local cframe = pathfindNodes[i].CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 								EntityMoveTo(model, cframe, config.Movement.Speed)
 								task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 							end
@@ -1126,7 +1096,7 @@ end
 	
 							-- Run forwards through nodes
 							for _, n in pathfindNodes do
-								local cframe = n.CFrame + Vector3.new(0, 3 + config.Entity.HeightOffset, 0)
+								local cframe = n.CFrame + Vector3.new(0, config.Entity.HeightOffset, 0)
 								EntityMoveTo(model, cframe, config.Movement.Speed)
 								task.spawn(entityTable.RunCallback, entityTable, "OnReachNode", n) -- OnReachNode
 							end
@@ -1145,7 +1115,7 @@ end
 				if not model:GetAttribute("Despawning") then
 					model:SetAttribute("Despawning", true)
 					task.spawn(entityTable.RunCallback, entityTable, "OnDespawning") -- OnDespawning
-					EntityMoveTo(model, model:GetPivot() - Vector3.new(0, 300, 0), config.Movement.Speed)
+					EntityMoveTo(model, model:GetPivot() - Vector3.new(0, -300, 0), config.Movement.Speed)
 					entityTable:Despawn()
 				end
 			end)
