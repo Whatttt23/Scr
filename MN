@@ -118,16 +118,10 @@ local defaultConfig = {
 		Break = true
 	},
 	Death = {
-		Type = "Guiding", -- "Curious"
-		Hints = {"Death", "Hints", "Go", "Here"},
         Cause = ""
 	}
 }
 local ambientStorage = {}
-local deathTypes = {
-	["Yellow"] = {"yellow", "curious"},
-	["Blue"] = {"blue", "guiding"}
-}
 local spawner = {}
 
 -- Functions
