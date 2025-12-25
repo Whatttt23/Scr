@@ -1115,7 +1115,6 @@ end
 				if not model:GetAttribute("Despawning") then
 					model:SetAttribute("Despawning", true)
 					task.spawn(entityTable.RunCallback, entityTable, "OnDespawning") -- OnDespawning
-					EntityMoveTo(model, model:GetPivot() - Vector3.new(0, -300, 0), config.Movement.Speed)
 					entityTable:Despawn()
 				end
 			end)
