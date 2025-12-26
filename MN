@@ -861,10 +861,7 @@ spawner.Run = function(entityTable)
                         v86.Name = "Crush"
                         v84.Entity.CFrame = v86:FindFirstChildWhichIsA("BasePart").CFrame
                         v85:Destroy()
-                        local v87 = ColorSequence.new({
-                            ColorSequenceKeypoint.new(0, Color3.new(0, 1, 1)),
-                            ColorSequenceKeypoint.new(1, Color3.new(0, 1, 1))
-                        })
+                        local v87 = ColorSequence.new(colourGuiding)
                         if true == true then
                             local v88 = next
                             local v89, v90 = v84:GetDescendants()
