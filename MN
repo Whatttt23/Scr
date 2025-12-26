@@ -321,42 +321,15 @@ if tool and tool.Parent == localChar then
     crucifix.BodyPosition.Position = (localCollision.CFrame * CFrame.new(0.5, 3, -6)).Position
 	repentance.Parent = workspace
 	sound:Play()
-game.Workspace.RepentanceNEW.Crucifix.Sound.Volume = 0
-game.Workspace.RepentanceNEW.Crucifix.Color = Color3.fromRGB(33, 27, 124)
-game.Workspace.RepentanceNEW.Crucifix.ExplodeParticle.Brightness = 0.1
+    repentance.Crucifix.Color = Color3.fromRGB(33, 27, 124)
+    repentance.Crucifix.ExplodeParticle.Brightness = 0.1
 
-function GitAud(soundgit,filename)
-    SoundName=tostring(SoundName)
-    local url=soundgit
-    local FileName = filename
-    writefile(FileName..".mp3", game:HttpGet(url))
-    return (getcustomasset or getsynasset)(FileName..".mp3")
-end
-
-function CustomGitSound(soundlink, vol, filename)
-    local sound = Instance.new("Sound")
-    sound.SoundId = GitAud(soundlink, filename)
-    sound.Parent = workspace
-    sound.Volume = 2.6
-   sound:Play()
-end
-
-CustomGitSound("https://raw.githubusercontent.com/Voor-Pr00/Eye/refs/heads/main/DOORS-UNUSED-SOUNDTRACK-Stress%20(mp3cut.net).mp3", 1, "crucifix")
-task.spawn(function()
+    task.spawn(function()
 		while model.Parent and repentance.Parent do
 			model:PivotTo(entityPart.CFrame)
 			task.wait()
 		end
 		model:Destroy()
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voor-Pr00/Achivements/refs/heads/main/Voorpr0"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "Who kills who now",
-    Desc = "You don’t want crash game today?",
-    Reason = "Use Crucifix on Wh1t3",
-    Image = "rbxassetid://100801611123508"
-})
 	end)
 
 	-- Animation
@@ -769,7 +742,9 @@ spawner.Run = function(entityTable)
 			-- Spawning
 			model:PivotTo(spawnPoint.CFrame + Vector3.new(0, config.Entity.HeightOffset, 0))
 			model.Parent = workspace
-      model.Footsteps:Destroy()
+            model.Footsteps.Parent = model:FindFirstChildWhichIsA("BasePart")
+            model.Footsteps.PlaybackSpeed = 0.1
+            model.Footsteps.MaxDistance = 250
 			task.spawn(entityTable.RunCallback, entityTable, "OnSpawned") -- OnSpawned
 	
 			-- Flickering lights
