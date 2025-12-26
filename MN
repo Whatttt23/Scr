@@ -827,14 +827,14 @@ spawner.Run = function(entityTable)
 	
 						-- Damage detection
 					if not model:GetAttribute("Paused") and not usedCrucifix then
-					for i,v in pairs(model:GetDescendants()) do
+							local c = config.Damage
+							if c.Enabled and c.Range > 0 and localHum.Health > 0 and not localChar:GetAttribute("Hiding") and model:GetAttribute("Damage") and not model:GetAttribute("BeingBanished") and (charPivot.Position - pivot.Position).Magnitude <= c.Range and inSight then
+                    if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
+                    for i,v in pairs(model:GetDescendants()) do
                       if v:IsA("Sound") then
                            v:Destroy()
                       end
                     end
-							local c = config.Damage
-							if c.Enabled and c.Range > 0 and localHum.Health > 0 and not localChar:GetAttribute("Hiding") and model:GetAttribute("Damage") and not model:GetAttribute("BeingBanished") and (charPivot.Position - pivot.Position).Magnitude <= c.Range and inSight then
-                    if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
                     local v80 = game:GetService("TweenService")
                     local v81 = game.Players.LocalPlayer.Character.Crucifix.Handle:Clone()
                     game.Players.LocalPlayer.Character.Crucifix:Destroy()
@@ -855,11 +855,11 @@ spawner.Run = function(entityTable)
                     v84.Parent = game.Workspace
                     local v85 = model
                     if typeof(v84) == "Instance" and v84.ClassName == "Model" then
-                        v84:MoveTo(v85.whitenew.CFrame.Position - Vector3.new(0, 0.5, 0) - Vector3.new(0, 3, 0))
+                        v84:MoveTo(v85:FindFirstChildWhichIsA("BasePart").CFrame.Position - Vector3.new(0, 0.5, 0) - Vector3.new(0, 3, 0))
                         local v86 = model:Clone()
                         v86.Parent = game.Workspace
                         v86.Name = "Crush"
-                        v84.Entity.CFrame = v86.whitenew.CFrame
+                        v84.Entity.CFrame = v86:FindFirstChildWhichIsA("BasePart").CFrame
                         v85:Destroy()
                         local v87 = ColorSequence.new({
                             ColorSequenceKeypoint.new(0, Color3.new(0, 1, 1)),
@@ -882,18 +882,18 @@ spawner.Run = function(entityTable)
                             v84.Circle.Spark.Color = v87
                         end
                         local v92 = {
-                            Position = v86.whitenew.CFrame.Position + Vector3.new(0, 3, 0)
+                            Position = v86:FindFirstChildWhichIsA("BasePart").CFrame.Position + Vector3.new(0, 3, 0)
                         }
                         local v93 = {
-                            Position = v86.whitenew.CFrame.Position - Vector3.new(0, 18, 0)
+                            Position = v86:FindFirstChildWhichIsA("BasePart").CFrame.Position - Vector3.new(0, 18, 0)
                         }
-                        local v94 = v80:Create(v86.whitenew, TweenInfo.new(2), v92)
+                        local v94 = v80:Create(v86:FindFirstChildWhichIsA("BasePart"), TweenInfo.new(2), v92)
                         local v95 = v80:Create(v84.Entity, TweenInfo.new(2), v92)
                         v94:Play()
                         v95:Play()
                         wait(2)
                         local v96 = next
-                        local v97, v98 = v86.whitenew:GetDescendants()
+                        local v97, v98 = v86:FindFirstChildWhichIsA("BasePart"):GetDescendants()
                         while true do
                             local v99
                             v98, v99 = v96(v97, v98)
@@ -906,7 +906,7 @@ spawner.Run = function(entityTable)
                                 }):Play()
                             end
                         end
-                        local v100 = v80:Create(v86.whitenew, TweenInfo.new(3), v93)
+                        local v100 = v80:Create(v86:FindFirstChildWhichIsA("BasePart"), TweenInfo.new(3), v93)
                         local v101 = v80:Create(v84.Entity, TweenInfo.new(3), v93)
                         v100:Play()
                         v101:Play()
