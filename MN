@@ -743,10 +743,7 @@ spawner.Run = function(entityTable)
 			-- Spawning
 			model:PivotTo(spawnPoint.CFrame + Vector3.new(0, config.Entity.HeightOffset, 0))
 			model.Parent = workspace
-            model.Footsteps.Parent = model:FindFirstChildWhichIsA("BasePart")
-            model:FindFirstChildWhichIsA("BasePart").Footsteps.PlaybackSpeed = 0.1
-            model:FindFirstChildWhichIsA("BasePart").Footsteps.MaxDistance = 250
-			task.spawn(entityTable.RunCallback, entityTable, "OnSpawned") -- OnSpawned
+            task.spawn(entityTable.RunCallback, entityTable, "OnSpawned") -- OnSpawned
 	
 			-- Flickering lights
 			if config.Lights.Flicker.Enabled then
