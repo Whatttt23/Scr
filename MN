@@ -321,7 +321,7 @@ if tool and tool.Parent == localChar then
     crucifix.BodyPosition.Position = (localCollision.CFrame * CFrame.new(0.5, 3, -6)).Position
 	repentance.Parent = workspace
 	sound:Play()
-    repentance.Crucifix.Color = Color3.fromRGB(33, 27, 124)
+    repentance.Crucifix.Color = colourGuiding
     repentance.Crucifix.ExplodeParticle.Brightness = 0.1
 
     task.spawn(function()
@@ -378,7 +378,7 @@ if tool and tool.Parent == localChar then
 		shaker:StartFadeOut(3)
 		task.spawn(function()
 			local color = Instance.new("Color3Value")
-			color.Value = Color3.fromRGB(33, 27, 124)
+			color.Value = colourGuiding
 
 			local tween = TweenService:Create(color, TweenInfo.new(0.5, Enum.EasingStyle.Sine), { Value = Color3.fromRGB(255, 116, 130) })
 			tween:Play()
@@ -827,6 +827,11 @@ spawner.Run = function(entityTable)
 	
 						-- Damage detection
 					if not model:GetAttribute("Paused") and not usedCrucifix then
+					for i,v in pairs(model:GetDescendants()) do
+                      if v:IsA("Sound") then
+                           v:Destroy()
+                      end
+                    end
 							local c = config.Damage
 							if c.Enabled and c.Range > 0 and localHum.Health > 0 and not localChar:GetAttribute("Hiding") and model:GetAttribute("Damage") and not model:GetAttribute("BeingBanished") and (charPivot.Position - pivot.Position).Magnitude <= c.Range and inSight then
                     if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
@@ -836,7 +841,7 @@ spawner.Run = function(entityTable)
                     v81.Parent = game.Workspace
                     v81.Name = "cruxy"
                     v81.Anchored = true
-                    v81.Color = Color3.fromRGB(86, 86, 255)
+                    v81.Color = colourGuiding
                     v81.Material = Enum.Material.Neon
                     v80:Create(v81, TweenInfo.new(5), {
                         Transparency = 1
