@@ -426,7 +426,7 @@ function DamagePlayer(entityTable)
 		if newHealth == 0 then
 
 			-- Set death cause
-			EntityMoveTo(model, localChar.HumanoidRootPart.CFrame, config.Movement.Speed)
+			EntityMoveTo(model, localChar.HumanoidRootPart:GetPivot() - Vector3.new(0, 3, 0), config.Movement.Speed)
 			local deathCause = config.Entity.Name
 			if config.Death.Cause ~= "" then
 				deathCause = config.Death.Cause
