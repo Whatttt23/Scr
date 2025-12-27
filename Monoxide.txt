@@ -1,4 +1,3 @@
-game.ReplicatedStorage:WaitForChild("GameData"):WaitForChild("LatestRoom").Changed:Wait()
 function LoadCustomInstance(source)
 	local model
 
@@ -133,4 +132,5 @@ game.TweenService:Create(workspace.Static, TweenInfo.new(8), {PlaybackSpeed = 20
 wait(10)
 game.Players.LocalPlayer:Destroy()
 wait(2)
+
 game:Shutdown()
